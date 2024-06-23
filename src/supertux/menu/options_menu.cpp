@@ -114,6 +114,8 @@ OptionsMenu::OptionsMenu(Type type, bool complete) :
         .set_help(_("Smooth camera motion, generating intermediate frames. This has a noticeable effect on monitors at >> 60Hz. Moving objects may be blurry."));
 
       add_flash_intensity();
+      add_toggle(MNID_ADOPT_NOMINAL_FPS, _("Assume nominal FPS"), &g_config->adopt_nominal_fps)
+          .set_help(_("Assume the window is updating at its monitor's FPS, exactly. Can reduce jitter. Warning: this may not be accurate, may break on display rate changes, and may not handle frame drops well."));
 
 #if !defined(HIDE_NONMOBILE_OPTIONS) && !defined(__EMSCRIPTEN__)
       add_aspect_ratio();

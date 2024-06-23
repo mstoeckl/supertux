@@ -77,6 +77,9 @@ public:
   virtual void set_icon(const SDL_Surface& icon) = 0;
   virtual SDLSurfacePtr make_screenshot() = 0;
 
+  /* Return zero if no good estimate */
+  virtual float get_nominal_fps() = 0;
+
   void do_take_screenshot();
 
 private:

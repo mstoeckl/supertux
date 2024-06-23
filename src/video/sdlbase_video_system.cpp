@@ -80,6 +80,19 @@ SDLBaseVideoSystem::on_resize(int w, int h)
   apply_config();
 }
 
+float
+SDLBaseVideoSystem::get_nominal_fps() {
+    int index = SDL_GetWindowDisplayIndex(m_sdl_window.get());
+    if (index < 0) {
+        return 0.0f;
+    }
+    SDL_DisplayMode mode;
+    if (SDL_GetCurrentDisplayMode(index, &mode) < 0) {
+        return 0.0f;
+    }
+    return static_cast<float>(mode.refresh_rate);
+}
+
 void
 SDLBaseVideoSystem::create_sdl_window(Uint32 flags)
 {

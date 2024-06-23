@@ -51,6 +51,7 @@ public:
   virtual void set_title(const std::string& title) override;
   virtual void set_icon(const SDL_Surface& icon) override;
   virtual SDLSurfacePtr make_screenshot() override;
+  virtual float get_nominal_fps() override;
 
 private:
   Size m_window_size;

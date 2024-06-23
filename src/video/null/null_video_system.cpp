@@ -129,4 +129,9 @@ NullVideoSystem::make_screenshot()
   return {};
 }
 
+float
+NullVideoSystem::get_nominal_fps() {
+    return 0.0f;
+}
+
 /* EOF */

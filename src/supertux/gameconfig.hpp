@@ -65,6 +65,8 @@ public:
   VideoSystem::Enum video;
   int vsync;
   bool frame_prediction;
+  bool adopt_nominal_fps;
+
   bool show_fps;
   bool show_player_pos;
   bool show_controller;

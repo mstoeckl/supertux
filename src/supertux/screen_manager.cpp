@@ -564,8 +564,16 @@ void ScreenManager::loop_iter()
 {
   auto now = std::chrono::steady_clock::now();
   Uint64 nsecs = std::chrono::duration_cast<std::chrono::nanoseconds>(now - last_time).count();
-  elapsed_time += 1e-9f * static_cast<float>(nsecs);
-  g_real_time += 1e-9f * static_cast<float>(nsecs);
+
+  float fps_est = m_video_system.get_nominal_fps();
+  if (fps_est > 0 && g_config->adopt_nominal_fps) {
+      elapsed_time += 1.f / fps_est;
+      g_real_time += 1.f / fps_est;
+  } else {
+      elapsed_time += 1e-9f * static_cast<float>(nsecs);
+      g_real_time += 1e-9f * static_cast<float>(nsecs);
+  }
+
   last_time = now;
 
   if (elapsed_time > seconds_per_step * 8) {

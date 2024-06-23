@@ -54,6 +54,7 @@ Config::Config() :
   video(VideoSystem::VIDEO_AUTO),
   vsync(1),
   frame_prediction(false),
+  adopt_nominal_fps(false),
   show_fps(false),
   show_player_pos(false),
   show_controller(false),
@@ -146,6 +147,7 @@ Config::load()
 
   config_mapping.get("flash_intensity", flash_intensity);
   config_mapping.get("frame_prediction", frame_prediction);
+  config_mapping.get("adopt_nominal_fps", adopt_nominal_fps);
   config_mapping.get("show_fps", show_fps);
   config_mapping.get("show_player_pos", show_player_pos);
   config_mapping.get("show_controller", show_controller);
@@ -365,6 +367,7 @@ Config::save()
   writer.write("profile", profile);
 
   writer.write("frame_prediction", frame_prediction);
+  writer.write("adopt_nominal_fps", adopt_nominal_fps);
   writer.write("show_fps", show_fps);
   writer.write("show_player_pos", show_player_pos);
   writer.write("show_controller", show_controller);
